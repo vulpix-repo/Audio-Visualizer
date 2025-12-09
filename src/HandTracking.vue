@@ -3,27 +3,32 @@
         <video ref="videoRef" autoplay playsinline id="webcam"></video>
         <canvas ref="canvasRef" id="canvas"></canvas>
         
-        <!-- pass hand data to Sphere component -->
+        <!-- pass hand data + audio to Sphere component -->
         <Sphere 
         :rightHandData="rightHandData" 
         :leftHandData="leftHandData"
+        :audioURL="audioURL"
         />
-        
+        <Audio @audioSelected="handleAudioSelected" />
+
         <div ref="statusRef" id="status">Loading MediaPipe...</div>
     </div>
-    <p id="instructions">
-        - Left hand: Pinch thumb and index finger to resize the 3D sphere<br>
-        - Right hand: Touch the sphere with your index finger to change its color
-    </p>
 </template>
 
 <script setup>
+// workflow:
+// HandTracking is the parent component -> webcam + mediapipe
+// passes files from Audio.vue to Sphere.vue
+// passes hand landmark data to Sphere.vue
+
 import { onMounted, onBeforeUnmount, ref, reactive } from 'vue'
 import Sphere from './Sphere.vue'
+import Audio from './Audio.vue'
 
 const videoRef = ref(null)
 const canvasRef = ref(null)
 const statusRef = ref(null)
+const audioURL = ref(null)
 
 let canvasCtx = null
 
@@ -43,6 +48,11 @@ const leftHandData = reactive({
   active: false,
   indexTip: null
 })
+
+// audio handling
+function handleAudioSelected(url) {
+  audioURL.value = url
+}
 
 // helper function to update canvas size
 function updateCanvasSize() {
@@ -288,19 +298,7 @@ onBeforeUnmount(() => {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
     border-radius: 5px;
-    font-family: Arial, sans-serif;
-    z-index: 10;
-}
-
-#instructions {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
     font-family: Helvetica, sans-serif;
-    font-size: 16px;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 10px;
-    margin-bottom: 0;
     z-index: 10;
 }
 </style>
