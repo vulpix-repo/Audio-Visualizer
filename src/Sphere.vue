@@ -151,18 +151,13 @@ function warpSphere(mesh, bassFr, treFr){
         vertex.normalize()
         const rf = 0.00003
 
-        // introduce 2 layers of noise for more complex ripples
+        // noise
         const noise1 = noise.noise3D(
             vertex.x + time * rf * 7, 
             vertex.y + time * rf * 8, 
             vertex.z + time * rf * 9)
         
-        const noise2 = noise.noise3D(
-            vertex.x + time * rf * 3, 
-            vertex.y + time * rf * 4, 
-            vertex.z + time * rf * 5)
-        
-        const combinedNoise = (noise1 * 0.7 + noise2 * 0.3) * amp * treFr * 3
+        const combinedNoise = (noise1 * 0.7) * amp * treFr * 3
         const distance = (offset + bassFr * 2) + combinedNoise
         
         vertex.multiplyScalar(distance)

@@ -62,12 +62,12 @@ function updateCanvasSize() {
     }
 }
 
-// Handle window resize
+// handle window resize
 function handleResize() {
     updateCanvasSize()
 }
 
-// Initialize webcam
+// initialize webcam
 async function initWebcam() {
     try {
         const stream = await navigator.mediaDevices.getUserMedia({
@@ -182,7 +182,7 @@ function onResults(results) {
         updateCanvasSize()
     }
     
-    // Reset hand data
+    // reset hand data
     rightHandData.active = false
     leftHandData.active = false
     
