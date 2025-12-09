@@ -1,38 +1,26 @@
-# audio_visualizer
+# Audio Visualizer with Hand Tracking Control
+This is an attempt at learning Vue (Javascript, HTML, and CSS). Available repositories on GitHub were used as references (see Source Codes).
 
-This template should help get you started developing with Vue 3 in Vite.
+# Details
+- Handtracking using MediaPipe Hands
+- Left Hand Control: Pinch to reduce the sphere size and audio volume
+- Right Hand Control: Touch the sphere to play/pause audio and change the sphere color
 
-## Recommended IDE Setup
+## Installation
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Follow these steps to install and set up the app locally:
 
-## Recommended Browser Setup
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/vulpix-repo/Audio-Visualizer
+2. **Navigate to project directory**
+   ```bash
+   cd Audio_Visualizer
+4. **For npm, follow this:**
+   ```bash
+   npm install
+   npm run dev
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+# Source Codes
+1. Hand Tracking from collidingScopes - https://github.com/collidingScopes/threejs-handtracking-101
+2. Audio Visualizer from wrainf - https://github.com/wrainf/3d-audio
